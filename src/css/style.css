@@ -1,0 +1,114 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  padding: 60px;
+  background-image: url('./world.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  margin-left: 400px; 
+  margin-right: 400px;
+}
+
+/* Heading styling */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 2px 2px 2px rgba(6, 6, 6, 0.1);
+}
+
+/* Search box styling */
+#search-box,
+.country-list {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #f8f9fa;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  text-align: center;
+}
+
+#search-box::placeholder {
+  color: #999;
+}
+
+#search-box:focus {
+  outline: none;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Country list styling */
+.country-list {
+  list-style-type: none;
+  padding: 0;
+  border-radius: 25px; /* Adding border-radius to make it round */
+  text-align: left; /* Aligning the country list to the left */
+  max-height: 300px; /* Set max height */
+  overflow-y: auto; /* Add vertical scrollbar if necessary */
+}
+
+.country-list li {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.country-list li:hover {
+  transform: translateY(-5px);
+}
+
+.country-list img {
+  border: 2px solid black; /* Add black border to flag in country list */
+  border-radius: 4px; /* Optional: Add border radius to make it rounder */
+}
+
+/* Country info styling */
+.country-info {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Aligns children elements horizontally (center) */
+}
+
+.country-info h1 {
+  color: black; /* Set country name color to black */
+  font-size: 24px; /* Adjust font size as needed */
+  margin-bottom: 10px; /* Adjust spacing */
+}
+
+.country-info img {
+  display: block; /* Ensure the image is treated as a block element */
+  margin: 0 auto; /* Set margins to auto to horizontally center the image */
+  border: 2px solid black; /* Add black border to flag in country info */
+  border-radius: 4px; /* Optional: Add border radius to make it rounder */
+}
+
+.country-info p {
+  margin-bottom: 10px; /* Adjust spacing between items */
+  text-align: center; /* Align text content in the middle */
+}
+
+/* Responsive styling */
+@media screen and (max-width: 600px) {
+  /* Adjustments for smaller screens */
+  #search-box {
+    font-size: 14px;
+  }
+}
