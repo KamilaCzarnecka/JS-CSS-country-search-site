@@ -1,4 +1,4 @@
-import './css/style.css';
+import './style.css';
 import {Notify} from 'notiflix/build/notiflix-notify-aio';
 import debounce from 'lodash.debounce';
 import {fetchCountries} from './fetchCountries';
@@ -20,6 +20,7 @@ function inputSearchBox() {
     if(!textInput) {
         clearMarkup(refs.countryInfo);
         clearMarkup(refs.countryList);
+        refs.countryInfo.style.display = "none"
         return;
     }
 
@@ -45,6 +46,8 @@ function adjustContainerHeight() {
 }
 
 const renderMarkup = data => {
+    data.sort((a, b) => a.name.official.localeCompare(b.name.official));
+
     if (data.length === 1) {
         clearMarkup(refs.countryList);
         const markupInfo = createInfoMarkup(data);
@@ -55,6 +58,7 @@ const renderMarkup = data => {
         const markupList = createListMarkup(data);
         refs.countryList.innerHTML = markupList;
         adjustContainerHeight();
+        refs.countryInfo.style.display = "none"
     }
 };
 
@@ -73,12 +77,14 @@ const createInfoMarkup = data => {
         ({name, capital, population, flags, languages}) =>
         `<img src="${flags.png}" alt="${name.official}" width="100" height="50">
         <h1>${name.official}</h1>
-        <p>Capital: ${capital}</p>
-        <p>Population: ${population}</p>
-        <p>Languages: ${Object.values(languages)}</p>`
+        <p><strong>Capital:</strong> ${capital}</p>
+        <p><strong>Population:</strong> ${population.toLocaleString()}</p>
+        <p><strong>Language:</strong> ${Object.values(languages)}</p>`
     );
 }
 
 refs.searchBox.addEventListener("input", debounce(inputSearchBox, DEBOUNCE_DELAY));
 
 window.addEventListener("resize", adjustContainerHeight);
+
+refs.countryInfo.style.display = "none";
